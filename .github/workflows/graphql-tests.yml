@@ -36,3 +36,6 @@ jobs:
                   key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
                   restore-keys: |
                       ${{ runner.os }}-pnpm-
+
+            - name: Install dependencies for GraphQL server
+              run: cd server && p
