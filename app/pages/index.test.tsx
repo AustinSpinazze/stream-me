@@ -10,6 +10,9 @@ describe('Home', () => {
 			name: /docs/i,
 		});
 
+		const paragraph = screen.getByTestId('paragraph');
+
 		expect(heading).toBeInTheDocument();
+		expect(paragraph).toBeInTheDocument();
 	});
 });
