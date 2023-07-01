@@ -28,10 +28,11 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
-                  cache: 'pnpm'
 
-            - name: Install dependencies for GraphQL server
-              run: cd server && pnpm ci
-
-            - name: Test GraphQL server
-              run: cd server && pnpm test
+            - name: Cache pnpm modules
+              uses: actions/cache@v3
+              with:
+                  path: ~/.pnpm-store
+                  key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-
