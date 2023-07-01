@@ -19,19 +19,19 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v2.0.1
+              with:
+                  version: 8.0.0
+
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'pnpm'
 
-            - name: Install pnpm
-              run: npm install -g pnpm
-
             - name: Install dependencies for GraphQL server
-              run: pnpm ci
-              working-directory: ./server
+              run: cd server && pnpm ci
 
             - name: Test GraphQL server
-              run: pnpm test
-              working-directory: ./server
+              run: cd server && pnpm test
