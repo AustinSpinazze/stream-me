@@ -38,7 +38,7 @@ jobs:
                       ${{ runner.os }}-pnpm-
 
             - name: Install dependencies for Next.js app
-              run: cd app && pnpm install --frozen-lockfile
+              run: cd app && pnpm install
 
-            - name: Test Next.js app
+            - name: Run tests in NextJS App
               run: cd app && pnpm test

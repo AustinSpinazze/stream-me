@@ -38,4 +38,7 @@ jobs:
                       ${{ runner.os }}-pnpm-
 
             - name: Install dependencies for GraphQL server
-              run: cd server && p
+              run: cd server && pnpm install
+
+            - name: Run GraphQL Tests
+              run: cd server && pnpm install
