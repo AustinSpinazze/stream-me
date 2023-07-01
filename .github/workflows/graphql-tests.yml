@@ -23,9 +23,15 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
+                  cache: 'pnpm'
+
+            - name: Install pnpm
+              run: npm install -g pnpm
 
             - name: Install dependencies for GraphQL server
-              run: cd server && npm ci
+              run: pnpm ci
+              working-directory: ./server
 
             - name: Test GraphQL server
-              run: cd server && npm test
+              run: pnpm test
+              working-directory: ./server

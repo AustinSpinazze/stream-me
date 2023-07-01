@@ -23,9 +23,15 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
+                  cache: 'pnpm'
+
+            - name: Install pnpm
+              run: npm install -g pnpm
 
             - name: Install dependencies for Next.js app
-              run: cd app && npm ci
+              run: pnpm ci
+              working-directory: ./app
 
             - name: Test Next.js app
-              run: cd app && npm test
+              run: pnpm test
+              working-directory: ./app
