@@ -20,7 +20,12 @@ export default function About() {
 			<main>
 				<Container maxWidth='sm'>
 					<Box my={4}>
-						<Typography variant='h4' component='h1' gutterBottom>
+						<Typography
+							data:test-id
+							variant='h4'
+							component='h1'
+							gutterBottom
+						>
 							NextJS Example
 						</Typography>
 						<Link href='/'>

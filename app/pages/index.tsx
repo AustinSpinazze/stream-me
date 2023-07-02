@@ -20,11 +20,20 @@ export default function Home() {
 			<main>
 				<Container maxWidth='sm'>
 					<Box my={4}>
-						<Typography variant='h4' component='h1' gutterBottom>
+						<Typography
+							role='heading'
+							variant='h4'
+							component='h1'
+							gutterBottom
+						>
 							NextJS Example
 						</Typography>
 						<Link href='/about'>
-							<Button variant='contained' color='primary'>
+							<Button
+								data-testid='link'
+								variant='contained'
+								color='primary'
+							>
 								Go to about page
 							</Button>
 						</Link>

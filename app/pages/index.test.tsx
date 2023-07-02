@@ -7,12 +7,12 @@ describe('Home', () => {
 		render(<Home />);
 
 		const heading = screen.getByRole('heading', {
-			name: /docs/i,
+			name: /NextJS Example/i,
 		});
 
-		const paragraph = screen.getByTestId('paragraph');
+		const link = screen.getByTestId('link');
 
 		expect(heading).toBeInTheDocument();
-		expect(paragraph).toBeInTheDocument();
+		expect(link).toBeInTheDocument();
 	});
 });
