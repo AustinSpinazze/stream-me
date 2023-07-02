@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Container, Typography, Box, Button } from '@mui/material';
 import Link from 'next/link';
 
-export default function Home() {
+export default function About() {
 	return (
 		<>
 			<Head>
@@ -23,9 +23,9 @@ export default function Home() {
 						<Typography variant='h4' component='h1' gutterBottom>
 							NextJS Example
 						</Typography>
-						<Link href='/about'>
+						<Link href='/'>
 							<Button variant='contained' color='primary'>
-								Go to about page
+								Go to home page
 							</Button>
 						</Link>
 					</Box>
