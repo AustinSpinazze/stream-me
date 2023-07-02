@@ -9,7 +9,7 @@ on:
             - 'app/**'
 
 jobs:
-    build:
+    test-next-app:
         runs-on: ubuntu-latest
 
         strategy:
@@ -19,19 +19,26 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v2.0.1
+              with:
+                  version: 7.0.0
+
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
-                  cache: 'pnpm'
 
-            - name: Install pnpm
-              run: npm install -g pnpm
+            - name: Cache pnpm modules
+              uses: actions/cache@v3
+              with:
+                  path: ~/.pnpm-store
+                  key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-
 
             - name: Install dependencies for Next.js app
-              run: pnpm ci
-              working-directory: ./app
+              run: cd app && pnpm install
 
-            - name: Test Next.js app
-              run: pnpm test
-              working-directory: ./app
+            - name: Run tests in NextJS App
+              run: cd app && pnpm test
