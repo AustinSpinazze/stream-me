@@ -9,7 +9,7 @@ on:
             - 'app/**'
 
 jobs:
-    build:
+    test-next-app:
         runs-on: ubuntu-latest
 
         strategy:

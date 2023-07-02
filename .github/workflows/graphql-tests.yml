@@ -9,7 +9,7 @@ on:
             - 'server/**'
 
 jobs:
-    build:
+    test-graphql-server:
         runs-on: ubuntu-latest
 
         strategy:
@@ -41,4 +41,4 @@ jobs:
               run: cd server && pnpm install
 
             - name: Run GraphQL Tests
-              run: cd server && pnpm install
+              run: cd server && pnpm test
